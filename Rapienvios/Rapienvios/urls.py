@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from RapienviosBackend.views import * 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    #---API url---#
+    path('api/packages/get', PackageListview.as_view(), name='package_list'),
+    
 ]
