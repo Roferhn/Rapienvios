@@ -39,9 +39,9 @@ class Shipping_Type(models.Model):
 
 class Shipping(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    shipping_date = models.DateField()
-    delivery_date = models.DateField()
-    updated_date = models.DateField()
+    shipping_date = models.DateField(null=True,blank=True)
+    delivery_date = models.DateField(null=True,blank=True)
+    update_date = models.DateField(null=True,blank=True)
     volume = models.DecimalField(max_digits=10, decimal_places=2, null=False)
     weigth = models.DecimalField(max_digits=10, decimal_places=2, null=False)
     type = models.ForeignKey(Shipping_Type, on_delete=models.CASCADE)
@@ -63,8 +63,8 @@ class Pricing(models.Model):
 class Package(models.Model):
     tracking_num = models.CharField(max_length=100,null=False)
     reception_date = models.DateField()
-    packaged_date = models.DateField()
-    shipping_id = models.ForeignKey(Shipping, on_delete=models.CASCADE,null=True)
+    packaged_date = models.DateField(null=True,blank=True)
+    shipping_id = models.ForeignKey(Shipping, on_delete=models.CASCADE,null=True,blank=True)
 
     def __str__(self):
         return self.type

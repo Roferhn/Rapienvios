@@ -1,17 +1,14 @@
-from django.shortcuts import render
-from django.views import View
-from django.http import JsonResponse
+from rest_framework import viewsets
 from .models import *
 from .serializers import *
 
 # Create your views here.
 
-class PackageListview(View):
+class PackageViewSet(viewsets.ModelViewSet):
+    queryset = Package.objects.all()
+    serializer_class = PackageSerializer
     
-    def get(self, request):
-        packages = Package.objects.all()
-        serializer = PackageSerializer(packages, many = True)
-
-        data= serializer.data
-
-        return JsonResponse(data, safe=False)
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    
