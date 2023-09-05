@@ -21,8 +21,18 @@ from RapienviosBackend.views import *
 
 #---API URL---#
 router = DefaultRouter()
-router.register(r'api/packages', PackageViewSet)
 router.register(r'api/user', UserViewSet)
+router.register(r'api/user_type', User_TypeViewSet)
+
+
+router.register(r'api/packages', PackageViewSet)
+router.register(r'api/locker', LockerViewSet)
+
+
+router.register(r'api/shipping', ShippingViewSet)
+router.register(r'api/shipping_status', Shipping_StatusViewSet)
+router.register(r'api/shipping_type', Shipping_TypeViewSet)
+router.register(r'api/pricing', PricingViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
