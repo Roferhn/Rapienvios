@@ -74,4 +74,4 @@ class Locker(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.type
+        return self.user_id

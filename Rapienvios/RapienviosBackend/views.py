@@ -29,11 +29,11 @@ class ShippingViewSet(viewsets.ModelViewSet):
     queryset = Shipping.objects.all()
 
 class Shipping_StatusViewSet(viewsets.ModelViewSet):
-    serializer_class = Shipping_Status
+    serializer_class = Shipping_StatusSerializer
     queryset = Shipping_Status.objects.all()
 
 class Shipping_TypeViewSet(viewsets.ModelViewSet):
-    serializer_class = Shipping_Type
+    serializer_class = Shipping_TypeSerializer
     queryset = Shipping_Type.objects.all()
     
 class PricingViewSet(viewsets.ModelViewSet):
