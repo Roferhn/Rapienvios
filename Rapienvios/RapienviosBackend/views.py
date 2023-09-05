@@ -21,6 +21,7 @@ class PackageViewSet(viewsets.ModelViewSet):
 
 class LockerViewSet(viewsets.ModelViewSet):
     serializer_class = LockerSerializers
+    queryset = Locker.objects.all()
 
 #--- Shipping API---#
 class ShippingViewSet(viewsets.ModelViewSet):
