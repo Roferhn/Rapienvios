@@ -48,16 +48,17 @@ class Shipping(models.Model):
     status = models.ForeignKey(Shipping_Status, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
-        return self.status
+        return f"{self.id}, {self.user.email},{self.type.type}"
+
 
 class Pricing(models.Model):
     ShippingType = models.ForeignKey(Shipping_Type, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=False)
     initial_date = models.DateField()
-    final_date = models.DateField()
+    final_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
-        return self.price
+        return f"Price for {self.ShippingType.type}"
 
 # ---Package Models---#
 class Package(models.Model):
@@ -67,11 +68,11 @@ class Package(models.Model):
     shipping_id = models.ForeignKey(Shipping, on_delete=models.CASCADE,null=True,blank=True)
 
     def __str__(self):
-        return self.type
+        return f"Package {self.tracking_num}"
 
 class Locker(models.Model):
-    package_id = models.ForeignKey(Package, on_delete=models.CASCADE, null=True)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    package = models.ForeignKey(Package, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user_id
+        return f"Locker for {self.user.email}"
