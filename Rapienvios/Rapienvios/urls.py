@@ -26,7 +26,6 @@ router.register(r'api/user_type', User_TypeViewSet)
 
 
 router.register(r'api/packages', PackageViewSet)
-router.register(r'api/locker', LockerViewSet)
 
 
 router.register(r'api/shipping', ShippingViewSet)

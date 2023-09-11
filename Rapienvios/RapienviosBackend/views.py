@@ -1,4 +1,6 @@
 from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
 from .models import *
 from .serializers import *
 
@@ -13,15 +15,22 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
+
 #---Package API---#
 
 class PackageViewSet(viewsets.ModelViewSet):
     serializer_class = PackageSerializer
     queryset = Package.objects.all()
 
-class LockerViewSet(viewsets.ModelViewSet):
-    serializer_class = LockerSerializers
-    queryset = Locker.objects.all()
+    @action(detail=False,methods=['GET'])
+    def PakcagesByUser(self, resquest, pk=None):
+        
+        user = 1
+        queryset = Package.objects.filter(user=user)
+        serializer = PackageSerializer(queryset,many=True)
+        return Response(serializer.data)
+
+
 
 #--- Shipping API---#
 class ShippingViewSet(viewsets.ModelViewSet):

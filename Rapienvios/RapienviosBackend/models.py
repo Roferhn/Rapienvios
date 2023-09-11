@@ -63,6 +63,7 @@ class Pricing(models.Model):
 # ---Package Models---#
 class Package(models.Model):
     tracking_num = models.CharField(max_length=100,null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     reception_date = models.DateField()
     packaged_date = models.DateField(null=True,blank=True)
     shipping_id = models.ForeignKey(Shipping, on_delete=models.CASCADE,null=True,blank=True)
@@ -70,9 +71,9 @@ class Package(models.Model):
     def __str__(self):
         return f"Package {self.tracking_num}"
 
-class Locker(models.Model):
-    package = models.ForeignKey(Package, on_delete=models.CASCADE, null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+# class Locker(models.Model):
+#     package = models.ForeignKey(Package, on_delete=models.CASCADE, null=True)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f"Locker for {self.user.email}"
+#     def __str__(self):
+#         return f"Locker for {self.user.email}"

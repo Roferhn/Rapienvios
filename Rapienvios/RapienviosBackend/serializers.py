@@ -20,10 +20,6 @@ class PackageSerializer(serializers.ModelSerializer):
         model = Package
         fields = '__all__'
 
-class LockerSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Locker
-        fields = '__all__'
 
 #--- Shipping Serializers ---#
 
